@@ -7,6 +7,7 @@
         "path": "chatwoot-events",
         "responseMode": "onReceived"
       },
+      "id": "1",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
@@ -25,6 +26,7 @@
           {"operation": "equal", "value2": "conversation_typing_off"}
         ]
       },
+      "id": "2",
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
@@ -34,6 +36,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "conversation_created"}]}
       },
+      "id": "3",
       "name": "Handle Conversation Created",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -43,6 +46,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "conversation_updated"}]}
       },
+      "id": "4",
       "name": "Handle Conversation Updated",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -52,6 +56,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "conversation_status_changed"}]}
       },
+      "id": "5",
       "name": "Handle Conversation Status Changed",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -61,6 +66,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "message_updated"}]}
       },
+      "id": "6",
       "name": "Handle Message Updated",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -70,6 +76,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "webwidget_triggered"}]}
       },
+      "id": "7",
       "name": "Handle Webwidget Triggered",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -79,6 +86,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "conversation_typing_on"}]}
       },
+      "id": "8",
       "name": "Handle Conversation Typing On",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -88,6 +96,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "conversation_typing_off"}]}
       },
+      "id": "9",
       "name": "Handle Conversation Typing Off",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -97,6 +106,7 @@
       "parameters": {
         "values": {"string": [{"name": "event", "value": "other"}]}
       },
+      "id": "10",
       "name": "Handle Other Event",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -122,5 +132,6 @@
   },
   "active": false,
   "settings": {},
-  "version": 1
+  "version": 1,
+  "id": "1"
 }
