@@ -1,0 +1,126 @@
+{
+  "name": "Chatwoot Events Switch",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatwoot-events",
+        "responseMode": "onReceived"
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "value1": "={{$json['event']}}",
+        "rules": [
+          {"operation": "equal", "value2": "conversation_created"},
+          {"operation": "equal", "value2": "conversation_updated"},
+          {"operation": "equal", "value2": "conversation_status_changed"},
+          {"operation": "equal", "value2": "message_updated"},
+          {"operation": "equal", "value2": "webwidget_triggered"},
+          {"operation": "equal", "value2": "conversation_typing_on"},
+          {"operation": "equal", "value2": "conversation_typing_off"}
+        ]
+      },
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [300, 300]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "conversation_created"}]}
+      },
+      "name": "Handle Conversation Created",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 100]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "conversation_updated"}]}
+      },
+      "name": "Handle Conversation Updated",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 175]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "conversation_status_changed"}]}
+      },
+      "name": "Handle Conversation Status Changed",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 250]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "message_updated"}]}
+      },
+      "name": "Handle Message Updated",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 325]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "webwidget_triggered"}]}
+      },
+      "name": "Handle Webwidget Triggered",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 400]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "conversation_typing_on"}]}
+      },
+      "name": "Handle Conversation Typing On",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 475]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "conversation_typing_off"}]}
+      },
+      "name": "Handle Conversation Typing Off",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 550]
+    },
+    {
+      "parameters": {
+        "values": {"string": [{"name": "event", "value": "other"}]}
+      },
+      "name": "Handle Other Event",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [500, 625]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{"node": "Switch", "type": "main", "index": 0}]]
+    },
+    "Switch": {
+      "main": [
+        [{"node": "Handle Conversation Created", "type": "main", "index": 0}],
+        [{"node": "Handle Conversation Updated", "type": "main", "index": 0}],
+        [{"node": "Handle Conversation Status Changed", "type": "main", "index": 0}],
+        [{"node": "Handle Message Updated", "type": "main", "index": 0}],
+        [{"node": "Handle Webwidget Triggered", "type": "main", "index": 0}],
+        [{"node": "Handle Conversation Typing On", "type": "main", "index": 0}],
+        [{"node": "Handle Conversation Typing Off", "type": "main", "index": 0}],
+        [{"node": "Handle Other Event", "type": "main", "index": 0}]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "version": 1
+}
